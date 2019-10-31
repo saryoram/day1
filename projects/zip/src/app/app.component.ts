@@ -15,11 +15,10 @@ export interface ISaveArg {
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
   template: `
-    <h1>Hello {{title}}!</h1>
-    <p>
-      Start editing to see some magic happen :)
-    </p>
-    <button (click)=save()>save</button>
+    <h1>Hello {{title}}!</h1><br>
+    
+    <sar-save-questionnaire></sar-save-questionnaire>
+    <!--<button (click)=save()>save</button>-->
   `
 })
 export class AppComponent {
@@ -50,7 +49,7 @@ export class AppComponent {
     // this.result.next('start');
     // this.queue.next('start2');
     //this.queue$ = zip(this.result, this.queue);
-    this.queue$ = zip(this.result, this.queue).pipe(
+    /*this.queue$ = zip(this.result, this.queue).pipe(
         //map( ([r, z]) => ({r, z = this.saveQuestionnaire1(z).pipe(take(1)) })),
         //switchMap((r, z) => this.saveQuestionnaire1(z).pipe(take(1))),
         tap( () => console.log('zip run')),
@@ -62,7 +61,7 @@ export class AppComponent {
 
     const subscribeSave = this.queue$.subscribe((val) => {console.log('queue$.subscribe' + val)}, (error) => console.error(error));
     this.result.next('start');
-    this.queue.next('start2');
+    this.queue.next('start2');*/
   }
 
   saveQuestionnaire1(sa: ISaveArg) {
