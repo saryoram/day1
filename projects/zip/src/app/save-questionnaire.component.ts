@@ -80,7 +80,7 @@ export class SaveQuestionnaireComponent implements OnInit {
   observer;
 
   onSentResult() {
-    this.observer.next('123');
+    this.observer.next('Ok');
     // this.observer.c
   }
 }
