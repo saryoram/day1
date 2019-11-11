@@ -595,6 +595,136 @@
           }
         }
       }
+    },
+    "mines": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "inlineStyle": true,
+          "inlineTemplate": true,
+          "spec": false,
+          "flat": true
+        },
+        "@schematics/angular:service": {
+          "spec": false,
+          "flat": true
+        }
+      },
+      "root": "projects/mines",
+      "sourceRoot": "projects/mines/src",
+      "prefix": "sar",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/mines",
+            "index": "projects/mines/src/index.html",
+            "main": "projects/mines/src/main.ts",
+            "polyfills": "projects/mines/src/polyfills.ts",
+            "tsConfig": "projects/mines/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/mines/src/favicon.ico",
+              "projects/mines/src/assets"
+            ],
+            "styles": [
+              "projects/mines/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/mines/src/environments/environment.ts",
+                  "with": "projects/mines/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "mines:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "mines:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "mines:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mines/src/test.ts",
+            "polyfills": "projects/mines/src/polyfills.ts",
+            "tsConfig": "projects/mines/tsconfig.spec.json",
+            "karmaConfig": "projects/mines/karma.conf.js",
+            "assets": [
+              "projects/mines/src/favicon.ico",
+              "projects/mines/src/assets"
+            ],
+            "styles": [
+              "projects/mines/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mines/tsconfig.app.json",
+              "projects/mines/tsconfig.spec.json",
+              "projects/mines/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/mines/e2e/protractor.conf.js",
+            "devServerTarget": "mines:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "mines:serve:production"
+            }
+          }
+        }
+      }
     }},
-  "defaultProject": "zip"
+  "defaultProject": "mines"
 }
